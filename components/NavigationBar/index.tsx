@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {useEffect, useState, useRef, useLayoutEffect} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 export const NavigationBar = () => {
     const [atTop, setAtTop] = useState(true);
@@ -36,11 +36,11 @@ export const NavigationBar = () => {
             }`}
         >
             <div className="font-primary max-w-[1200px] flex mx-auto">
-                <div className="flex justify-between items-center w-full py-4 px-4">
+                <div className="flex justify-between items-center w-full">
 
                     {/* Title */}
                     <div className="relative w-full h-10 font-bold whitespace-nowrap flex items-center">
-                        <Link href="/" className="inline-block">
+                        <Link href="/" className="inline-block px-5">
                             <div className="inline-flex">
                                 {parts.map((part, i) => (
                                     <span key={i} className="inline-flex">
@@ -76,13 +76,13 @@ export const NavigationBar = () => {
 
                     {/* Navigation */}
                     <div className="flex gap-6 tracking-wide">
-                        <Link href="#about" className="hover:text-gray-300 transition-colors">
+                        <Link href="#about" className="hover:text-gray-300 transition-colors px-5">
                             About
                         </Link>
-                        <Link href="#settings" className="hover:text-gray-300 transition-colors">
+                        <Link href="#settings" className="hover:text-gray-300 transition-colors px-5">
                             Settings
                         </Link>
-                        <Link href="#concepts" className="hover:text-gray-300 transition-colors">
+                        <Link href="#concepts" className="hover:text-gray-300 transition-colors px-5">
                             Concepts
                         </Link>
                     </div>
