@@ -1,16 +1,8 @@
 import type {Metadata} from "next";
-import {
-    Castoro_Titling,
-    Geist,
-    Geist_Mono,
-    Open_Sans,
-    Playfair,
-    PT_Sans, Public_Sans,
-    Rubik_Glitch,
-    Staatliches
-} from "next/font/google";
+import {Assistant, Gideon_Roman, Staatliches} from "next/font/google";
 import "./globals.css";
 import {NavigationBar} from "@/components/NavigationBar";
+import {Footer} from "@/components/Footer";
 
 
 const primary = Staatliches({
@@ -18,12 +10,12 @@ const primary = Staatliches({
     variable: "--font-primary",
 });
 
-const secondary = PT_Sans({
+const secondary = Gideon_Roman({
     weight: "400",
     variable: "--font-secondary",
 })
 
-const mainFont = Public_Sans({
+const mainFont = Assistant({
     weight: "400",
     variable: "--font-main",
 })
@@ -47,6 +39,7 @@ export default function RootLayout({
         <div className={"mt-[-56px]"}>
             {children}
         </div>
+        <Footer/>
         </body>
         </html>
     );

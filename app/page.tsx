@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import Banner from "@/shows/Dread Noir/Banner";
 import About from "@/components/HomePage/About";
+import Cast from "@/components/HomePage/Cast";
 
 export default function Home() {
     const [scrollY, setScrollY] = useState(0);
@@ -20,6 +21,7 @@ export default function Home() {
             {/* Banner */}
             <Banner/>
             <About/>
+            <Cast/>
         </main>
     );
 }

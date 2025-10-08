@@ -66,10 +66,12 @@ export default function Banner() {
             {/* Foreground content */}
             <Container>
                 <div className="relative z-20 flex flex-col justify-end h-full">
-                    <div className="text-right">
+                    <div>
                         <div className="text-white flex flex-col justify-end min-h-[100vh] items-end">
-                            <h3 className="font-primary mb-2">
-                                Once Upon A Dreadful Night Presents
+                            <h3 className={"flex items-center text-[1.2em] mb-2"}>
+                                <span className={"mr-5"}>Helen Burger Presents: </span>{" "}
+                                <span
+                                    className="font-primary">Once Upon A Dreadful Night</span>
                             </h3>
 
                             {/* Cinematic DREAD NOIR */}
@@ -92,12 +94,12 @@ export default function Banner() {
 
 
                             <h2
-                                className="font-secondary text-[1.5rem] mb-5"
+                                className="text-[1.5rem] mb-5"
                                 style={{fontFamily: headerFont.style.fontFamily}}
                             >
                                 October 28th - 30th 2026
                             </h2>
-                            <p className="max-w-[500px] bg-red-950/60 p-4 font-secondary">
+                            <p className="max-w-[500px] bg-red-950/60 p-4">
                                 A dark, improvised Eldritch horror set in 1950s New York City, following a
                                 troubled detective drawn into a string of inexplicable murders of arcane
                                 nature. As the case unfolds, the city itself seems to twist around forbidden

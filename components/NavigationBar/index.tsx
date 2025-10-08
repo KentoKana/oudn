@@ -75,7 +75,7 @@ export const NavigationBar = () => {
                     </div>
 
                     {/* Navigation */}
-                    <div className="flex gap-6 tracking-wide">
+                    <div className="flex tracking-wide">
                         <Link href="#about" className="hover:text-gray-300 transition-colors px-5">
                             About
                         </Link>
