@@ -31,7 +31,7 @@ export const NavigationBar = () => {
 
     return (
         <nav
-            className={`text-[1.3em] transition-colors duration-500 fixed top-0 w-full z-50 ${
+            className={`text-[1.3em] transition-colors duration-500 fixed top-0 w-full z-50 py-3 ${
                 atTop ? "bg-transparent text-white" : "bg-black/80 backdrop-blur-sm text-white"
             }`}
         >

@@ -31,7 +31,7 @@ export default function About() {
     return (
         <div className="bg-black text-white" ref={sectionRef}>
             <Container className="pt-32 leading-[1.6] text-2xl">
-                <div className="flex gap-5">
+                <div className="flex gap-20">
                     <div
                         className="w-1/3 transition-transform duration-500 ease-out"
                         style={{transform: `translateX(${leftColTranslate})`}}
