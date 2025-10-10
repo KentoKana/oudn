@@ -79,11 +79,11 @@ export const NavigationBar = () => {
                         <Link href="#about" className="hover:text-gray-300 transition-colors px-5">
                             About
                         </Link>
-                        <Link href="#settings" className="hover:text-gray-300 transition-colors px-5">
-                            Settings
-                        </Link>
                         <Link href="#concepts" className="hover:text-gray-300 transition-colors px-5">
                             Concepts
+                        </Link>
+                        <Link href="#shows" className="hover:text-gray-300 transition-colors px-5">
+                            Shows
                         </Link>
                     </div>
 

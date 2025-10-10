@@ -20,41 +20,92 @@ export default function About() {
         };
 
         window.addEventListener("scroll", handleScroll, {passive: true});
-        handleScroll(); // initialize on load
+        handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Compute horizontal translation for each column
-    const leftColTranslate = `${(1 - scrollY) * -100}px`; // starts left, moves to 0
-    const rightColTranslate = `${(1 - scrollY) * 100}px`; // starts right, moves to 0
+    const numCols = 4;
+    const colWidth = 100 / numCols;
+
+    // Stagger: leftmost column starts first
+    const startOffsets = [0, 0.1, 0.2, 0.3];
+
+    // Exaggerated translation distances for stronger visual stagger
+    const translateMultipliers = [100, 200, 300, 400]; // left → right
+
+    const getOffsetProgress = (index: number) => {
+        const scaledScroll = Math.min(scrollY * 1.1, 1);
+        const progress = (scaledScroll - startOffsets[index]) / (1 - startOffsets[index]);
+        return Math.max(0, Math.min(1, progress));
+    };
 
     return (
-        <div className="bg-black text-white" ref={sectionRef}>
-            <Container className="pt-32 leading-[1.6] text-2xl">
+        <div
+            ref={sectionRef}
+            className="relative bg-black text-white overflow-hidden min-h-screen flex items-center justify-center"
+        >
+            {/* Background Columns */}
+            <div className="absolute inset-0 pointer-events-none flex">
+                {[...Array(numCols)].map((_, i) => {
+                    const progress = getOffsetProgress(i);
+                    const translate = (1 - progress) * translateMultipliers[i];
+                    return (
+                        <div
+                            key={`col-${i}`}
+                            className="absolute bottom-0 w-[25%]"
+                            style={{
+                                left: `${i * colWidth}%`,
+                                height: "100%",
+                                backgroundColor: "#7a0000",
+                                transform: `translateY(${translate}%)`,
+                            }}
+                        />
+                    );
+                })}
+
+                {/* Vertical borders between columns */}
+                {[...Array(numCols - 1)].map((_, i) => (
+                    <div
+                        key={`border-${i}`}
+                        className="absolute top-0 h-full w-[2px] bg-black"
+                        style={{
+                            left: `${(i + 1) * colWidth}%`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            {/* Foreground Content */}
+            <Container className="relative z-10 pt-32 leading-[1.6] text-2xl">
                 <div className="flex gap-20">
                     <div
                         className="w-1/3 transition-transform duration-500 ease-out"
-                        style={{transform: `translateX(${leftColTranslate})`}}
+                        style={{
+                            transform: `translateX(${(1 - scrollY) * -100}px)`,
+                        }}
                     >
                         <PrimaryHeading>
-                            What is <em>"Once Upon A Dreadful Night"</em> ?
+                            What is <em>"Once Upon A Dreadful Night"</em>?
                         </PrimaryHeading>
                     </div>
                     <div
                         className="w-2/3 transition-transform duration-500 ease-out"
-                        style={{transform: `translateX(${rightColTranslate})`}}
+                        style={{
+                            transform: `translateX(${(1 - scrollY) * 100}px)`,
+                        }}
                     >
                         <p className="mb-10">
                             <em>"Once Upon A Dreadful Night"</em> is an improvised theater
-                            production inspired by the tabletop RPG <em>
-                            <a
-                                target={"_blank"}
-                                href={"https://www.tiltingatwindmills.net/games/dread/"}
-                                className={"underline hover:text-red-700 transition-all duration-200"}
-                            >
-                                Dread
-                            </a>
-                        </em>.
+                            production inspired by the tabletop RPG{" "}
+                            <em>
+                                <a
+                                    target="_blank"
+                                    href="https://www.tiltingatwindmills.net/games/dread/"
+                                    className="underline hover:text-red-700 transition-all duration-200"
+                                >
+                                    Dread
+                                </a>
+                            </em>.
                         </p>
                         <p className="mb-10">
                             The rules of Dread are simple: whenever a player attempts a risky
